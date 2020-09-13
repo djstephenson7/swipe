@@ -67,10 +67,24 @@ class App extends Component {
     );
   }
 
+  renderNoMoreCards() {
+    return (
+      <Card>
+        <Card.Title>All done!</Card.Title>
+        <Text style={{ marginBottom: 10 }}>There's no more content here</Text>
+        <Button title="Get more!" />
+      </Card>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Deck data={DATA} renderCard={this.renderCard} />
+        <Deck
+          data={DATA}
+          renderCard={this.renderCard}
+          renderNoMoreCards={this.renderNoMoreCards}
+        />
         <StatusBar style="auto" />
       </View>
     );
@@ -83,5 +97,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  cardStyle: {
+    position: 'absolute',
   },
 });
