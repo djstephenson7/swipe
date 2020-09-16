@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Card, Button } from 'react-native-elements';
-import Deck from './src/Deck';
+import { Button, Card } from 'react-native-elements';
+import Deck from './src/DeckComponent';
 
 const DATA = [
   {
@@ -47,8 +47,8 @@ const DATA = [
   },
 ];
 
-class App extends Component {
-  renderCard(item) {
+const App = () => {
+  const renderCard = (item) => {
     const { id, text, uri } = item;
 
     return (
@@ -65,9 +65,9 @@ class App extends Component {
         />
       </Card>
     );
-  }
+  };
 
-  renderNoMoreCards() {
+  const renderNoMoreCards = () => {
     return (
       <Card>
         <Card.Title>All done!</Card.Title>
@@ -75,21 +75,19 @@ class App extends Component {
         <Button title="Get more!" />
       </Card>
     );
-  }
+  };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Deck
-          data={DATA}
-          renderCard={this.renderCard}
-          renderNoMoreCards={this.renderNoMoreCards}
-        />
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      <Deck
+        data={DATA}
+        renderCard={renderCard}
+        renderNoMoreCards={renderNoMoreCards}
+      />
+      <StatusBar style="auto" />
+    </View>
+  );
+};
 
 export default App;
 
